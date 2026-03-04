@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres:17-alpine
+    container_name: ddbb_sistema_reclamos
+    environment:
+      POSTGRES_DB: ddbb_sistema_reclamos
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdatadev:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - sistema-reclamos-network
+
+volumes:
+  pgdatadev:
+
+networks: 
+  sistema-reclamos-network:
+    driver: bridge

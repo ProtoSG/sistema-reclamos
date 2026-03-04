@@ -1,0 +1,230 @@
+# ============================================
+# Maven / Java Build
+# ============================================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+# ============================================
+# Java / IDE
+# ============================================
+*.class
+*.log
+*.ctxt
+.mtj.tmp/
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+hs_err_pid*
+replay_pid*
+# ============================================
+# Eclipse
+# ============================================
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
+.externalToolBuilders/
+*.launch
+.classpath
+.project
+.factorypath
+# ============================================
+# IntelliJ IDEA
+# ============================================
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+.idea_modules/
+*.idea
+# ============================================
+# VS Code
+# ============================================
+.vscode/
+*.code-workspace
+.history/
+# ============================================
+# NetBeans
+# ============================================
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+# ============================================
+# Tomcat / Servidores de Aplicaciones
+# ============================================
+/tomcat/
+/logs/
+*.log
+/work/
+/temp/
+# ============================================
+# Variables de Entorno y Configuración Sensible
+# ============================================
+.env
+.env.local
+.env.*.local
+*.env
+application-secrets.properties
+secrets.properties
+# Archivos de configuración con credenciales
+persistence.xml.local
+db-config.properties
+# ============================================
+# Base de Datos
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+*.h2.db
+# Scripts SQL con datos sensibles
+*-data.sql
+seed-*.sql
+# ============================================
+# Frontend (Vue 3)
+# ============================================
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+# Build outputs
+dist/
+dist-ssr/
+build/
+.output/
+.nuxt/
+.next/
+# Package manager
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+# Environment
+.env.local
+.env.*.local
+# Editor directories
+.vscode/
+.idea/
+# Logs
+logs
+*.log
+# Cache
+.cache/
+.parcel-cache/
+.vite/
+# ============================================
+# Sistema Operativo
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+# Linux
+*~
+.directory
+.Trash-*
+# ============================================
+# Seguridad y Credenciales (CRÍTICO)
+# ============================================
+# JWT Secret Keys
+jwt-secret.key
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.jks
+*.keystore
+# Archivos con credenciales
+credentials.json
+secrets.yml
+config.secret.json
+# Variables de entorno
+.env
+.env.production
+.env.development
+.env.test
+# ============================================
+# Testing
+# ============================================
+/test-output/
+/test-results/
+coverage/
+*.cover
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.tox/
+# ============================================
+# Documentación Generada
+# ============================================
+/javadoc/
+/apidoc/
+/docs/_build/
+# ============================================
+# Otros
+# ============================================
+# Backups
+*.backup
+*.bak
+*.orig
+# Archivos temporales
+*.tmp
+*.temp
+*~
+# Archives
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+# Configuración local de desarrolladores
+local.properties
+.envrc
