@@ -2,6 +2,8 @@ package com.reclamos.dto.response;
 
 import java.math.BigDecimal;
 
+import com.reclamos.enums.ReclamoEstado;
+
 public record ReclamoResponseDTO(
     Integer id,
     String tipoDocumento,
@@ -14,5 +16,6 @@ public record ReclamoResponseDTO(
     String tipoBien,
     BigDecimal montoReclamado,
     String descripcionReclamo,
-    String pedidoConsumidor
+    String pedidoConsumidor,
+    ReclamoEstado estado
 ) {}

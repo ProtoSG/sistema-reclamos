@@ -2,5 +2,6 @@ package com.reclamos.dto.response;
 
 public record AuthResponseDTO(
   String username,
-  String token
+  String accessToken,
+  String refreshToken
 ) {}

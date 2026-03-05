@@ -21,7 +21,8 @@ public class ReclamoMapper {
         reclamo.getTipoBien(), 
         reclamo.getMontoReclamado(), 
         reclamo.getDescripcionReclamo(), 
-        reclamo.getPedidoConsumidor()
+        reclamo.getPedidoConsumidor(),
+        reclamo.getEstado()
     );
   }
 

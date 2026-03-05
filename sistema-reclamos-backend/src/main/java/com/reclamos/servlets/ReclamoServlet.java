@@ -39,6 +39,15 @@ public class ReclamoServlet extends HttpServlet {
 
   @Override
   protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    // Endpoint protegido - verificar autenticación
+    Integer userId = (Integer) req.getAttribute("userId");
+    if (userId == null) {
+      resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+      resp.setContentType("application/json; charset=UTF-8");
+      resp.getWriter().write("{\"error\":\"Autenticación requerida\"}");
+      return;
+    }
+
     String pathInfo = req.getPathInfo();
 
     if (pathInfo == null || pathInfo.equals("/")) {
@@ -46,7 +55,7 @@ public class ReclamoServlet extends HttpServlet {
 
       String message = """
         {
-          "error": "ID requerida",
+          "error": "ID requerida"
         }
       """;
 
@@ -66,7 +75,7 @@ public class ReclamoServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    resp.setContentType("application/jsno; charset=UTF-8");
+    resp.setContentType("application/json; charset=UTF-8");
 
     String pathInfo = req.getPathInfo();
 
@@ -80,14 +89,22 @@ public class ReclamoServlet extends HttpServlet {
       String[] pathParts = pathInfo.substring(1).split("/");
 
       if (pathParts.length == 2 && pathParts[1].equals("atenciones")) {
-          Integer id = Integer.parseInt(pathParts[0]);  // ✅ Índice correcto
+          // Endpoint protegido - verificar autenticación
+          Integer userId = (Integer) req.getAttribute("userId");
+          if (userId == null) {
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            resp.getWriter().write("{\"error\":\"Autenticación requerida\"}");
+            return;
+          }
+
+          Integer id = Integer.parseInt(pathParts[0]);
           List<AtencionResponseDTO> atenciones = atencionService.getAllByReclamoId(id);
           resp.getWriter().write(gson.toJson(atenciones));
           return;
       }
 
       if (pathParts.length == 1) {
-          Integer id = Integer.parseInt(pathParts[0]);  // ✅ Índice correcto
+          Integer id = Integer.parseInt(pathParts[0]);
           ReclamoResponseDTO reclamo = service.getById(id);
           resp.getWriter().write(gson.toJson(reclamo));
           return;
@@ -107,7 +124,7 @@ public class ReclamoServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    resp.setContentType("appliction/json; charset=UTF-8");
+    resp.setContentType("application/json; charset=UTF-8");
 
     String pathInfo = req.getPathInfo();
 
@@ -132,6 +149,14 @@ public class ReclamoServlet extends HttpServlet {
       String[] pathParts = pathInfo.substring(1).split("/");
 
       if (pathParts.length == 2 && pathParts[1].equals("atenciones")) {
+          // Endpoint protegido - verificar autenticación
+          Integer userId = (Integer) req.getAttribute("userId");
+          if (userId == null) {
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            resp.getWriter().write("{\"error\":\"Autenticación requerida\"}");
+            return;
+          }
+
           Integer id = Integer.parseInt(pathParts[0]);
 
           CreateAtencionRequestDTO createAtencion = gson.fromJson(req.getReader(), CreateAtencionRequestDTO.class);
@@ -163,7 +188,7 @@ public class ReclamoServlet extends HttpServlet {
 
   @Override
   protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    resp.setContentType("appliction/json; charset=UTF-8");
+    resp.setContentType("application/json; charset=UTF-8");
 
     String pathInfo = req.getPathInfo();
 
@@ -178,6 +203,14 @@ public class ReclamoServlet extends HttpServlet {
       Integer id = Integer.parseInt(pathParts[0]);
 
       if (pathParts.length == 2 && pathParts[1].equals("estado")) {
+        // Endpoint protegido - verificar autenticación
+        Integer userId = (Integer) req.getAttribute("userId");
+        if (userId == null) {
+          resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+          resp.getWriter().write("{\"error\":\"Autenticación requerida\"}");
+          return;
+        }
+
         UpdateStateReclamoRequestDTO stateDTO = gson.fromJson(req.getReader(), UpdateStateReclamoRequestDTO.class);
 
         Set<ConstraintViolation<UpdateStateReclamoRequestDTO>> violations = ValidationUtil.validate(stateDTO);
@@ -192,6 +225,14 @@ public class ReclamoServlet extends HttpServlet {
         ReclamoResponseDTO updated = service.updateState(id, stateDTO.reclamoEstado());
         resp.getWriter().write(gson.toJson(updated));
       } else if (pathParts.length == 1) {
+        // Endpoint protegido - verificar autenticación
+        Integer userId = (Integer) req.getAttribute("userId");
+        if (userId == null) {
+          resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+          resp.getWriter().write("{\"error\":\"Autenticación requerida\"}");
+          return;
+        }
+
         CreateReclamoRequestDTO reclamo = gson.fromJson(req.getReader(), CreateReclamoRequestDTO.class);
 
         ReclamoResponseDTO reclamoUpdated = service.update(id, reclamo);

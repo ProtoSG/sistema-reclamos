@@ -29,7 +29,9 @@ public class AtencionDAO {
     EntityManager em = EMFUtil.getEntityManager();
     try {
       String query = """
-        SELECT a FROM Atencion a WHERE a.reclamo.id = :reclamoId
+        SELECT DISTINCT a FROM Atencion a 
+        WHERE a.reclamo.id = :reclamoId 
+        ORDER BY a.fecha DESC
       """;
 
       return em.createQuery(query, Atencion.class)
